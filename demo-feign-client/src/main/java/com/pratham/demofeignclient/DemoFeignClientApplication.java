@@ -16,7 +16,7 @@ public class DemoFeignClientApplication {
     }
 
     @GetMapping("/")
-    public String greet(){
+    public String greet() {
         return "Greetings from demofeignclient app";
     }
 

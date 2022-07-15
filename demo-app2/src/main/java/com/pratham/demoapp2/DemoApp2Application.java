@@ -13,8 +13,8 @@ public class DemoApp2Application {
         SpringApplication.run(DemoApp2Application.class, args);
     }
 
-	@GetMapping("/")
-	public String greet(){
+    @GetMapping("/")
+    public String greet() {
         return "Greetings from demo2 app";
     }
 }
