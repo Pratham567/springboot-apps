@@ -1,10 +1,10 @@
-package com.pratham.demoapp2;
+package com.pratham.demofeignclient;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DemoApp2ApplicationTests {
+class DemoFeignClientApplicationTests {
 
     @Test
     void contextLoads() {
