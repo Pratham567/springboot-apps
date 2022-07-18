@@ -26,12 +26,12 @@ public class AppController {
         return demo1FeignClient.bye() + "via FeignClientDemo1";
     }
 
-    @GetMapping("/demo1/hello")
+    @GetMapping("/demo2/hello")
     public String hello2() {
         return demo2FeignClient.hello() + "via FeignClientDemo2";
     }
 
-    @GetMapping("/demo1/bye")
+    @GetMapping("/demo2/bye")
     public String bye2() {
         return demo2FeignClient.bye() + "via FeignClientDemo2";
     }
