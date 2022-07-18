@@ -10,12 +10,13 @@ public class AppController {
 
     @GetMapping("/hello")
     public String hello() {
+        System.out.println("Invoked demo1 hello api");
         return "Hello from app: 1";
     }
 
     @GetMapping("/bye")
     public String bye() {
-        return "Hello from app: 1 ";
+        return "Bye from app: 1";
     }
 
 }

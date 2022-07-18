@@ -3,10 +3,10 @@ package com.pratham.demofeignclient.feignclients;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@FeignClient(value = "demo-app2", path = "/api/v1/demo2")
+@FeignClient(name = "demo-app2")
 public interface DemoTwoFeignClientEureka {
 
-    @GetMapping("/hello")
+    @GetMapping("/api/v1/demo2/hello")
     String hello();
 
     @GetMapping("/bye")
