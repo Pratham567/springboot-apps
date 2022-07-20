@@ -20,13 +20,13 @@ public class CustomFilter implements GlobalFilter {
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         logger.info("This log comes from a pre-filter: ");
         ServerHttpRequest request = exchange.getRequest();
-        logger.info(" Request URI: " + request.getURI().toString());
+        logger.info(" Request URI: " + request.getURI());
         logger.info("Authorization: " + request.getHeaders().getFirst("Authorization"));
 
         // NOTE: the URI doesn't contain the instance ID, it is automatically trimmed off earlier by the api gateway
 
         // // API specific changes, can have if...else on the uri
-        if(request.getURI().toString().contains("/api/v1/demo1")){
+        if (request.getURI().toString().contains("/api/v1/demo1")) {
             // do something
             logger.info("This request goes to app: demo1");
         }
@@ -35,7 +35,7 @@ public class CustomFilter implements GlobalFilter {
         // return chain.filter(exchange);
 
         // // Set Post filters
-        return  chain.filter(exchange).then(Mono.fromRunnable(() -> {
+        return chain.filter(exchange).then(Mono.fromRunnable(() -> {
 
             // // Note: we can have uri specific filters here as well!
 

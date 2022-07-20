@@ -16,6 +16,11 @@ http://localhost:8085/api/v1/feignclient/eureka/demo2/hello
 http://localhost:9001/demo-feign-client/api/v1/feignclient/eureka/demo1/hello
 http://localhost:9001/demo-feign-client/api/v1/feignclient/eureka/demo2/hello
 
+# Load balanced call via api-gateway, eureka, feign client makes call via api-gateway
+http://localhost:9001/demo-feign-client/api/v1/feignclient/eureka/api-gateway/demo1/hello
+http://localhost:9001/demo-feign-client/api/v1/feignclient/eureka/api-gateway/demo2/hello
+
+
 # # multiple use cases
  client -> API-GATEWAY -> FEIGN-CLIENT -> API-GATEWAY -> DEMO-APP1
  client -> API-GATEWAY -> FEIGN-CLIENT -> DEMO-APP2
