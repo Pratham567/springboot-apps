@@ -1,0 +1,21 @@
+# Basic API calls for demo apps
+
+
+# Feign client calls without eureka (not load balanced)
+http://localhost:8085/api/v1/feignclient/demo1/hello
+http://localhost:8085/api/v1/feignclient/demo2/hello
+
+# Eureka UI
+http://localhost:8761/
+
+# Load balanced calls via feign client and eureka
+http://localhost:8085/api/v1/feignclient/eureka/demo1/hello
+http://localhost:8085/api/v1/feignclient/eureka/demo2/hello
+
+# Load balanced call via api gateway, eureka and feign client
+http://localhost:9001/demo-feign-client/api/v1/feignclient/eureka/demo1/hello
+http://localhost:9001/demo-feign-client/api/v1/feignclient/eureka/demo2/hello
+
+# # multiple use cases
+ client -> API-GATEWAY -> FEIGN-CLIENT -> API-GATEWAY -> DEMO-APP1
+ client -> API-GATEWAY -> FEIGN-CLIENT -> DEMO-APP2
