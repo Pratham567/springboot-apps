@@ -16,6 +16,9 @@ http://localhost:8085/api/v1/feignclient/demo2/hello
 # Eureka UI
 http://localhost:8761/
 
+# Call an app via api-gateway (Load Balanced)
+http://localhost:9001/demo-app1/api/v1/demo1/hello
+
 # Load balanced calls via feign client and eureka
 http://localhost:8085/api/v1/feignclient/eureka/demo1/hello
 http://localhost:8085/api/v1/feignclient/eureka/demo2/hello
@@ -38,8 +41,12 @@ http://localhost:8095/api/v1/demo-reactive/api-gateway/call/demo1/hello
 # Reactive Call from demo-app-reactive to demo-app1 via api-gateway (Load Balanced)
 http://localhost:8095/api/v1/demo-reactive/api-gateway/call/demo1/hello
 
-# Non-Reactive Call from demo-app2 to demo-app1 via api-gateway
-# Simply call from demo-app2
+# Non-Reactive Call from demo-app2 to demo-app1 via api-gateway (Load Balanced)
+http://localhost:8082/api/v1/demo1/rest-template/api-gateway/demo1/hello
+
+## IMP to note
+# RestTemplate call from demo-app2 via api-gateway (provide the instanceId instead of api-gateway IP:port) -> need to use @LoadBalanced notation on restTemplate
+http://localhost:8082/api/v1/demo1/rest-template/api-gateway/demo1/hello
 
 ## Insights
 Not registering app-reactive to Eureka
