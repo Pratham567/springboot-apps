@@ -24,12 +24,12 @@ public class RestControllerApiGateway {
     public String demo1Hello() {
 
         // This will work as well, but need to provide the exact location of api-gateway
-        return restTemplate.getForObject("http://localhost:9001/demo-app1/api/v1/demo1/hello", String.class) + " via restTemplate via api-gateway from demo-app2";
+        return restTemplate.getForObject("http://localhost:9001/demo-app1/api/v1/demo1/hello", String.class)
+                + " via restTemplate via api-gateway from demo-app2";
 
-        // The following fails with unknown host exception unless we provide a LoadBalanced resttemplate
+        // The following fails with unknown host exception unless we provide a LoadBalanced restTemplate
         // return loadBalancedRestTemplate.getForObject("http://demo-api-gateway/demo-app1/api/v1/demo1/hello", String.class) + " via Load Balanced restTemplate via api-gateway from demo-app2";
     }
-
 
 
 }
