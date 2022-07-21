@@ -32,11 +32,14 @@ http://localhost:9001/demo-feign-client/api/v1/feignclient/eureka/api-gateway/de
  client -> API-GATEWAY -> FEIGN-CLIENT -> API-GATEWAY -> DEMO-APP1
  client -> API-GATEWAY -> FEIGN-CLIENT -> DEMO-APP2
 
-# Reactive Call from demo-app-reactive to demo-app1 via api-gateway
+# Reactive Call from demo-app-reactive to demo-app1 without api-gateway (Not Load Balanced)
+http://localhost:8095/api/v1/demo-reactive/api-gateway/call/demo1/hello
+
+# Reactive Call from demo-app-reactive to demo-app1 via api-gateway (Load Balanced)
+http://localhost:8095/api/v1/demo-reactive/api-gateway/call/demo1/hello
 
 # Non-Reactive Call from demo-app2 to demo-app1 via api-gateway
-
-
+# Simply call from demo-app2
 
 ## Insights
 Not registering app-reactive to Eureka

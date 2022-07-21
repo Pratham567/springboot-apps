@@ -21,6 +21,7 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+// not needed as it will be taken care of by eureka client.
 //	implementation 'org.springframework.cloud:spring-cloud-starter-loadbalancer'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
