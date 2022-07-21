@@ -1,0 +1,7 @@
+rootProject.name = 'demo-multiproject'
+include 'demo-app1'
+include 'demo-app2'
+include 'demo-app-reactive'
+include 'demo-discovery-service'
+include 'demo-feign-client'
+include 'demo-api-gateway'
