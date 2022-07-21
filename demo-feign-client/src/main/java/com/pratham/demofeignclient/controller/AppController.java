@@ -11,10 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/feignclient")
 public class AppController {
 
-    @Autowired
-    private DemoOneFeignClient demo1FeignClient;
-    @Autowired
-    private DemoTwoFeignClient demo2FeignClient;
+    private final DemoOneFeignClient demo1FeignClient;
+    private final DemoTwoFeignClient demo2FeignClient;
+
+    public AppController(DemoOneFeignClient demo1FeignClient, DemoTwoFeignClient demo2FeignClient) {
+        this.demo1FeignClient = demo1FeignClient;
+        this.demo2FeignClient = demo2FeignClient;
+    }
 
     @GetMapping
     public String baseApi() {

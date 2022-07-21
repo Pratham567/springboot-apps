@@ -1,5 +1,6 @@
 # Basic API calls for demo apps
 # demo-app1
+http://localhost:8081/
 http://localhost:8081/api/v1/demo1/hello
 http://localhost:8081/api/v1/demo1/bye
 # demo-app2
@@ -50,6 +51,12 @@ http://localhost:8082/api/v1/demo1/rest-template/api-gateway/demo1/hello
 
 ## Insights
 Not registering app-reactive to Eureka
+Address resolution with Eureka works with restTemplate only when it is loadBalanced,
+or we first get the url from Eureka via loadbalancer client,
+follow: https://stackoverflow.com/a/53146348/9552874
+
+
+
 
 
 

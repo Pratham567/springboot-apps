@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/feignclient/eureka/api-gateway")
 public class AppControllerEurekaApiGateway {
 
-    @Autowired
-    private DemoFeignClientEurekaApiGateway demoFeignClientEurekaApiGateway;
+    private final DemoFeignClientEurekaApiGateway demoFeignClientEurekaApiGateway;
+
+    public AppControllerEurekaApiGateway(DemoFeignClientEurekaApiGateway demoFeignClientEurekaApiGateway) {
+        this.demoFeignClientEurekaApiGateway = demoFeignClientEurekaApiGateway;
+    }
 
     @GetMapping
     public String baseApi() {

@@ -11,10 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/feignclient/eureka")
 public class AppControllerEureka {
 
-    @Autowired
-    private DemoOneFeignClientEureka demo1FeignClient;
-    @Autowired
-    private DemoTwoFeignClientEureka demo2FeignClient;
+    private final DemoOneFeignClientEureka demo1FeignClient;
+    private final DemoTwoFeignClientEureka demo2FeignClient;
+
+    public AppControllerEureka(DemoOneFeignClientEureka demo1FeignClient, DemoTwoFeignClientEureka demo2FeignClient) {
+        this.demo1FeignClient = demo1FeignClient;
+        this.demo2FeignClient = demo2FeignClient;
+    }
 
     @GetMapping
     public String baseApi() {
