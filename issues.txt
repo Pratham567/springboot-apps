@@ -3,3 +3,9 @@
 Unable to load io.netty.resolver.dns.macos.MacOSDnsServerAddressStreamProvider, fallback to system defaults. This may result in incorrect DNS resolutions on MacOS
 fixed here: https://github.com/netty/netty/issues/11020
 
+#
+If you face error like "java.net.UnknownHostException: failed to resolve...." then add below property in your student and address microservices.
+eureka.instance.hostname=localhost
+
+#
+

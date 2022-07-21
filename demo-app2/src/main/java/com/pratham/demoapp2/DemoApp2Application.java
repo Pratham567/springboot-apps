@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
-@EnableEurekaClient
 public class DemoApp2Application {
 
     public static void main(String[] args) {

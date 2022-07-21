@@ -1,5 +1,13 @@
 # Basic API calls for demo apps
-
+# demo-app1
+http://localhost:8081/api/v1/demo1/hello
+http://localhost:8081/api/v1/demo1/bye
+# demo-app2
+http://localhost:8082/api/v1/demo2/hello
+http://localhost:8082/api/v1/demo2/bye
+# demo-reactive
+http://localhost:8095/
+http://localhost:8095/api/v1/demo-reactive
 
 # Feign client calls without eureka (not load balanced)
 http://localhost:8085/api/v1/feignclient/demo1/hello
@@ -20,7 +28,18 @@ http://localhost:9001/demo-feign-client/api/v1/feignclient/eureka/demo2/hello
 http://localhost:9001/demo-feign-client/api/v1/feignclient/eureka/api-gateway/demo1/hello
 http://localhost:9001/demo-feign-client/api/v1/feignclient/eureka/api-gateway/demo2/hello
 
-
 # # multiple use cases
  client -> API-GATEWAY -> FEIGN-CLIENT -> API-GATEWAY -> DEMO-APP1
  client -> API-GATEWAY -> FEIGN-CLIENT -> DEMO-APP2
+
+# Reactive Call from demo-app-reactive to demo-app1 via api-gateway
+
+# Non-Reactive Call from demo-app2 to demo-app1 via api-gateway
+
+
+
+## Insights
+Not registering app-reactive to Eureka
+
+
+
