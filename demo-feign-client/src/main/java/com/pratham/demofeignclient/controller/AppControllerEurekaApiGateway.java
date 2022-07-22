@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/feignclient/eureka/api-gateway")
 public class AppControllerEurekaApiGateway {
 
+    private final DemoFeignClientEurekaApiGateway demoFeignClientEurekaApiGateway;
     Logger logger = LoggerFactory.getLogger(AppControllerEurekaApiGateway.class);
     long count = 1;
     long circuitBreakerFallbackCount = 1;
     long retryFallbackCount = 1;
-    private final DemoFeignClientEurekaApiGateway demoFeignClientEurekaApiGateway;
 
     public AppControllerEurekaApiGateway(DemoFeignClientEurekaApiGateway demoFeignClientEurekaApiGateway) {
         this.demoFeignClientEurekaApiGateway = demoFeignClientEurekaApiGateway;
@@ -44,6 +44,7 @@ public class AppControllerEurekaApiGateway {
         // logger.error("Error: ", th);
         return "You have got a fallback response from circuitbreaker fallbackDemo1Hello";
     }
+
     private String retryFallbackDemo1Hello(Throwable th) {
         logger.info("Inside the retry fallbackDemo1Hello function!!");
         logger.info("Circuitbreaker Fallback count: " + circuitBreakerFallbackCount++);
