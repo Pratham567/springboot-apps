@@ -1,5 +1,12 @@
+# # multiple use cases [LoadBalanced]
+ client -> API-GATEWAY -> FEIGN-CLIENT -> API-GATEWAY -> DEMO-APP1
+ client -> API-GATEWAY -> FEIGN-CLIENT -> DEMO-APP2
+
+
+
 # Basic API calls for demo apps
 # demo-app1
+http://localhost:8081/
 http://localhost:8081/api/v1/demo1/hello
 http://localhost:8081/api/v1/demo1/bye
 # demo-app2
@@ -31,9 +38,6 @@ http://localhost:9001/demo-feign-client/api/v1/feignclient/eureka/demo2/hello
 http://localhost:9001/demo-feign-client/api/v1/feignclient/eureka/api-gateway/demo1/hello
 http://localhost:9001/demo-feign-client/api/v1/feignclient/eureka/api-gateway/demo2/hello
 
-# # multiple use cases
- client -> API-GATEWAY -> FEIGN-CLIENT -> API-GATEWAY -> DEMO-APP1
- client -> API-GATEWAY -> FEIGN-CLIENT -> DEMO-APP2
 
 # Reactive Call from demo-app-reactive to demo-app1 without api-gateway (Not Load Balanced)
 http://localhost:8095/api/v1/demo-reactive/api-gateway/call/demo1/hello
@@ -44,12 +48,46 @@ http://localhost:8095/api/v1/demo-reactive/api-gateway/call/demo1/hello
 # Non-Reactive Call from demo-app2 to demo-app1 via api-gateway (Load Balanced)
 http://localhost:8082/api/v1/demo1/rest-template/api-gateway/demo1/hello
 
+# Test Circuitbreaker
+# Call from feign client via Eureka via api-gateway
+http://localhost:8085/api/v1/feignclient/eureka/api-gateway/demo1/hello
+http://localhost:8085/actuator/health
+
+
+
+
+
+
 ## IMP to note
 # RestTemplate call from demo-app2 via api-gateway (provide the instanceId instead of api-gateway IP:port) -> need to use @LoadBalanced notation on restTemplate
 http://localhost:8082/api/v1/demo1/rest-template/api-gateway/demo1/hello
 
 ## Insights
-Not registering app-reactive to Eureka
+* Not registering app-reactive to Eureka
+* Address resolution with Eureka works with restTemplate only when it is loadBalanced,
+or we first get the url from Eureka via loadbalancer client,
+follow: https://stackoverflow.com/a/53146348/9552874
+This does not happen with Feign Client as it internally uses loadBalancer
+* We can modify the headers
+* Retry, RateLimiter, Bulkhead and TimeLimiter
+* Aspect Order
+Retry ( CircuitBreaker ( RateLimiter ( TimeLimiter ( Bulkhead ( Function ) ) ) ) )
+So retry is applied at end, if needed
+* Circuitbreaker: By default all exceptions count as a failure
+slowCallRateThreshold, slowCallDurationThreshold
+# circuitbreaker properties: https://resilience4j.readme.io/docs/circuitbreaker
+# we can trigger an event when there is a change in state
+# BulkHead: limit the number of concurrent requests
+# Ratelimiter: Limit the number of requests in a time interval
+decline this over limit request, or build a queue to execute them later or combine these two approaches in some way
+
+# TODO:
+It takes almost a minute to route to ins 2 from feign client via api-gateway via eureka
+
+
+
+
+
 
 
 
