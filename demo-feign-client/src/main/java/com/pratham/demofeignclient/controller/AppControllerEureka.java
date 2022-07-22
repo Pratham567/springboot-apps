@@ -2,7 +2,6 @@ package com.pratham.demofeignclient.controller;
 
 import com.pratham.demofeignclient.feignclients.DemoOneFeignClientEureka;
 import com.pratham.demofeignclient.feignclients.DemoTwoFeignClientEureka;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
