@@ -20,13 +20,18 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    // not needed as it will be taken care of by eureka client.
+//	implementation 'org.springframework.cloud:spring-cloud-starter-loadbalancer'
+
     implementation 'org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j'
     // The following is not mandatory though, but it's a good practice
-    implementation 'org.springframework.cloud:spring-cloud-starter-circuitbreaker-spring-retry'
+    // the following package is not available
+//    implementation 'org.springframework.cloud:spring-cloud-starter-circuitbreaker-spring-retry'
 
-    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-// not needed as it will be taken care of by eureka client.
-//	implementation 'org.springframework.cloud:spring-cloud-starter-loadbalancer'
+    // AOP is internally used by resilience4j
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
