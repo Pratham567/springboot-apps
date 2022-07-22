@@ -7,5 +7,6 @@ fixed here: https://github.com/netty/netty/issues/11020
 If you face error like "java.net.UnknownHostException: failed to resolve...." then add below property in your student and address microservices.
 eureka.instance.hostname=localhost
 
-#
+# check this endpoint, why it's not working (feign client circuitbreaker actuators)
+http://localhost:8085/actuator/metric
 
