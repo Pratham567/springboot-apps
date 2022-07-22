@@ -29,6 +29,9 @@ public class AppControllerEurekaApiGateway {
         return "Hello from base API /api/v1/feignclient/eureka/api-gateway. This feign call will make request to APP via api-gateway. You may want to invoke the following: /APP/[hello/bye]";
     }
 
+    // Retry overlaps the circuitbreaker and is executed later,
+    // so if fallback is present in the circuitbreaker anotation,
+    // then that will be executed and the call would never come to retry.
     @GetMapping("/demo1/hello")
     @Retry(name = "demo-retry-config", fallbackMethod = "retryFallbackDemo1Hello")
     @CircuitBreaker(name = "demo-circuitbreaker-config")
