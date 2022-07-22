@@ -43,14 +43,14 @@ public class AppControllerEurekaApiGateway {
 
     private String fallbackDemo1Hello(Throwable th) {
         logger.info("Inside the circuitbreaker fallbackDemo1Hello function!!");
-        logger.info("Retry Fallback count: " + retryFallbackCount++);
+        logger.info("Circuitbreaker Fallback count: " + circuitBreakerFallbackCount++);
         // logger.error("Error: ", th);
         return "You have got a fallback response from circuitbreaker fallbackDemo1Hello";
     }
 
     private String retryFallbackDemo1Hello(Throwable th) {
         logger.info("Inside the retry fallbackDemo1Hello function!!");
-        logger.info("Circuitbreaker Fallback count: " + circuitBreakerFallbackCount++);
+        logger.info("Retry Circuitbreaker Fallback count: " + retryFallbackCount++);
         // logger.error("Error: ", th);
         return "You have got a fallback response from retry fallbackDemo1Hello";
     }
