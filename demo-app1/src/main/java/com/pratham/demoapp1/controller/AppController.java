@@ -17,13 +17,15 @@ public class AppController {
 
     @GetMapping("/hello")
     public String hello() {
-        logger.info("Invoked demo1 hello api. InstanceId: " + instanceId);
+    // public String hello() throws InterruptedException {
+    //     Thread.sleep(5000); // 5 sec quick nap
+        logger.info("Invoked demo1 hello api. InstanceId: {}", instanceId);
         return "Hello from app: 1. InstanceId: " + instanceId;
     }
 
     @GetMapping("/bye")
     public String bye() {
-        logger.info("Invoked demo1 bye api. InstanceId: " + instanceId);
+        logger.info("Invoked demo1 bye api. InstanceId: {}", instanceId);
         return "Bye from app: 1. InstanceId: " + instanceId;
     }
 

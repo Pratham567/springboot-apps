@@ -38,7 +38,6 @@ http://localhost:9001/demo-feign-client/api/v1/feignclient/eureka/demo2/hello
 http://localhost:9001/demo-feign-client/api/v1/feignclient/eureka/api-gateway/demo1/hello
 http://localhost:9001/demo-feign-client/api/v1/feignclient/eureka/api-gateway/demo2/hello
 
-
 # Reactive Call from demo-app-reactive to demo-app1 without api-gateway (Not Load Balanced)
 http://localhost:8095/api/v1/demo-reactive/api-gateway/call/demo1/hello
 
@@ -53,6 +52,14 @@ http://localhost:8082/api/v1/demo1/rest-template/api-gateway/demo1/hello
 http://localhost:8085/api/v1/feignclient/eureka/api-gateway/demo1/hello
 http://localhost:8085/actuator/health
 
+
+
+# TODO:
+# micrometer with open-feign, circuit breaker
+# Resilience4j: Health indicators:
+# https://resilience4j.readme.io/docs/getting-started-3#aspect-order:~:text=Micrometer%20Getting%20Started-,Health%20endpoint,-Spring%20Boot%20Actuator
+# fallback in circuitbreaker annotation
+# the infinite dead-end issue with only feign client: reproduce it with the feign client only (without api-gateway)
 
 
 
@@ -81,8 +88,13 @@ slowCallRateThreshold, slowCallDurationThreshold
 # Ratelimiter: Limit the number of requests in a time interval
 decline this over limit request, or build a queue to execute them later or combine these two approaches in some way
 
-# TODO:
+# TODO: Problems
 It takes almost a minute to route to ins 2 from feign client via api-gateway via eureka
+if we use circuit breaker as default priority, then the retry will always send the same request to the same instance which is down, but if we reverse the priority, then retry will try to loadbalance
+Circuit breaker will always use the same fuse for all the instances, hence if one is broken, all are not accessible (https://github.com/k631583871/spring-cloud-circuitbreaker-instances)
+Known issue: https://github.com/spring-cloud/spring-cloud-gateway/issues/1371
+
+
 
 
 
