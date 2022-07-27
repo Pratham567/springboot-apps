@@ -3,6 +3,7 @@ package com.pratham.demofeignclient.controller;
 import com.pratham.demofeignclient.feignclients.DemoFeignClientEurekaApiGateway;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
+import io.github.resilience4j.timelimiter.annotation.TimeLimiter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,6 +41,7 @@ public class AppControllerEurekaApiGateway {
     */
     @Retry(name = "demo-retry-config")
     @CircuitBreaker(name = "demo-circuitbreaker-config", fallbackMethod = "fallbackDemo1Hello")
+    // @TimeLimiter(name = "demo-time-limiter-config")
     @GetMapping("/demo1/hello")
     public String hello1() {
         logger.info("Count: " + count++);
