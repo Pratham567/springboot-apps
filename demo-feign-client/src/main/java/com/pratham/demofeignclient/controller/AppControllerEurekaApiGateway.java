@@ -38,7 +38,7 @@ public class AppControllerEurekaApiGateway {
     @Retry(name = "demo-retry-config", fallbackMethod = "retryFallbackDemo1Hello")
     @CircuitBreaker(name = "demo-circuitbreaker-config")
     */
-    @Retry(name = "demo-retry-config")
+    // @Retry(name = "demo-retry-config")
     @CircuitBreaker(name = "demo-circuitbreaker-config", fallbackMethod = "fallbackDemo1Hello")
     @GetMapping("/demo1/hello")
     public String hello1() {

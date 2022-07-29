@@ -16,9 +16,9 @@ public class AppController {
     private String instanceId;
 
     @GetMapping("/hello")
-    public String hello() {
-    // public String hello() throws InterruptedException {
-    //     Thread.sleep(5000); // 5 sec quick nap
+    // public String hello() {
+    public String hello() throws InterruptedException {
+        // Thread.sleep(10000); // 10 sec quick nap
         logger.info("Invoked demo1 hello api. InstanceId: {}", instanceId);
         return "Hello from app: 1. InstanceId: " + instanceId;
     }
